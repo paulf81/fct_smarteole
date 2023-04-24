@@ -1,16 +1,15 @@
-import glob
+
 import matplotlib.pyplot as plt
-import numpy as np
-import os
-import pandas as pd
+from pathlib import Path
+
 from time import perf_counter as timerpc
-import yaml
+
 
 from floris.tools import FlorisInterface, UncertaintyInterface
 from flasc.visualization import plot_floris_layout
 
 
-def load_floris(wake_model="cc", wd_std=0.0):
+def load_floris(wake_model="gch", wd_std=0.0):
     """Load a FlorisInterface object for the wind farm at hand.
 
     Args:
@@ -27,19 +26,11 @@ def load_floris(wake_model="cc", wd_std=0.0):
     """
 
     # Use the local FLORIS GCH/CC model for the wake model settings
-    root_path = os.path.dirname(os.path.abspath(__file__))
-    fn = os.path.join(root_path, "{:s}.yaml".format(wake_model))
-
-    # Now assign the turbine locations and information
-    layout_x = [1630.222, 1176.733, 816.389, 755.938, 0.0, 1142.24, 1553.102]
-    layout_y = [0.0, 297.357, 123.431, 575.544, 647.779, 772.262, 504.711]
+    root_path = Path(__file__).resolve().parent
+    fn = root_path / "{:s}.yaml".format(wake_model)
 
     # Initialize FLORIS model and format appropriately
     fi = FlorisInterface(fn)
-    fi.reinitialize(
-        layout_x=layout_x,
-        layout_y=layout_y,
-    )
 
     # Add uncertainty
     if wd_std > 0.01:
