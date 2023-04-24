@@ -1,0 +1,18 @@
+{
+  "template": "https://github.com/NREL/flasc_cookiecutter_template",
+  "commit": "989de2871bb8e054a0a5986b689a774ae107b200",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "full_name": "Paul Fleming",
+      "email": "paul.fleming@nrel.gov",
+      "github_username": "paulf81",
+      "project_name": "fct_smarteole",
+      "project_slug": "fct_smarteole",
+      "project_description": "Collection of modeling and analysis scripts for project 'fct_smarteole'. Heavily relies on FLORIS and FLASC.",
+      "populate_with_examples": "y",
+      "_template": "https://github.com/NREL/flasc_cookiecutter_template"
+    }
+  },
+  "directory": null
+}
