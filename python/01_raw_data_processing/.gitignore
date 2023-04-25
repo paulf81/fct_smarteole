@@ -1,4 +1,6 @@
 data
 data/**
+figures
+figures/**
 postprocessed
 postprocessed/**
